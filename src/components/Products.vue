@@ -1,7 +1,7 @@
 <template>
   <div>
     <products>
-      <div class="container">
+      <div class="container mt-5">
         <div class="row">
           <div class="col-lg-3 col-md-12 col-xs-12" v-for="product in products" :key="product">
             <div class="product" :id="'product' + product.id">
@@ -20,34 +20,20 @@
           </div>
         </div>
     </products>
-    <table class="table" v-if="compareProduct.length >= 2">
-      <thead>
-        <tr class="name_product"><td></td></tr>
-        <td style="border:none"></td>
-          <td class="title_table">Price</td>
-          <td class="title_table">Colors</td>
-          <td class="title_table">Condition</td>
-      </thead>
-      <tbody v-for="(index, value) in compareProduct" :key="value">
-        <tr>
-          <td>{{index.name}}</td>
-            <td>{{index.price}} $</td>
-            <td><span :class="index.color"></span></td>
-          <td :style="`${index.condition == 'Fresh' ? 'background: #48cfad' : 'background: #ff715b'}`">{{index.condition}}</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </template>
 
 <script>
 import common from '../common/common.js'
+import store from '../store'
+
 export default {
   mixins: [common]
 }  
 </script>
 
 <style>
+
 .overlay {
   position: absolute;
   top: 0;
@@ -151,46 +137,6 @@ img {
     color: #b1b1b3;
     margin: 0;
 }
-
- .table {
-    background-color: #fff;
-    border-radius: 5px;
-    overflow: hidden;
-    -webkit-box-shadow: 0 13px 21px -5px rgba(0,0,0,.05);
-    box-shadow: 0 13px 21px -5px rgba(0,0,0,.05);
-    border: 1px solid #eee;
-    font-size: 18px;
-    table-layout: fixed;
-  }
-
-  .name_product {
-    display: none;
-  }
-
-  .title_table {
-    background: #f9f9f9;
-  }
-
-  .blue, .red, .green {
-    height: 20px;
-    width: 20px;
-    display: inline-block;
-    margin-right: 5px;
-    border-radius: 100%;
-    z-index: 1;
-  }
-
-  .blue {
-    background: #0197f6;
-  }
-
-  .red {   
-    background: #ff715b;
-  }
-
-  .green {   
-    background: #48cfad;
-  }
 
 </style>
 
